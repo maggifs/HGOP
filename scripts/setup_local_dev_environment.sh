@@ -19,18 +19,18 @@ function setup {
     echo "Installing..."
 
     #updating packages
-    apt-get update
+    sudo apt-get update
 
     #command installs git
-    apt-get install git
+    sudo apt-get install git
 
     #install curl
-    apt-get install curl
+    sudo apt-get install curl
     #adds PPA to the system
     curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 
     # installs nodejs
-    apt-get install nodejs
+    sudo apt-get install nodejs
 
     #Storing version of installed programs in variables
     gitVer=`git --version`
