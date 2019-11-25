@@ -2,12 +2,9 @@ function setup {
   #Get the starting date of the script
   startDate=`date`
 
-  #Checks for the current operating system
+  #Checks for the current operating system, if it is Darwin, I change the variable to MacOS
   OS="`uname`"
   case $OS in
-    'Linux')
-      OS='Linux'
-      ;;
     'Darwin') 
       OS='MacOS'
       ;;
