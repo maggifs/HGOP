@@ -24,23 +24,23 @@ Introduction into the bash scripting language and learning how to setup our loca
 
 Create a bash script `scripts/setup_local_dev_environment.sh` that checks required programs/dependencies.
 
-- [ ] Make sure all bash commands are commented.
-- [ ] The script should prompt the user with:
-  - [ ] A welcome message that includes the current user’s username (the
+- [x] Make sure all bash commands are commented.
+- [x] The script should prompt the user with:
+  - [x] A welcome message that includes the current user’s username (the
         username should not be hard coded).
-  - [ ] Information on what the script does
-  - [ ] What type of operating system it is running on
-- [ ] Display the date and time when the script starts and ends.
-- [ ] The script should install the following tools:
-  - [ ] brew
-  - [ ] git
-  - [ ] NodeJS
-- [ ] The script should print versions of all tools.
-  - [ ] brew
-  - [ ] git
-  - [ ] NodeJS (node)
-  - [ ] npm
-- [ ] The script should generate a log file and output to terminal.
+  - [x] Information on what the script does
+  - [x] What type of operating system it is running on
+- [x] Display the date and time when the script starts and ends.
+- [x] The script should install the following tools:
+  - [x] brew
+  - [x] git
+  - [x] NodeJS
+- [x] The script should print versions of all tools.
+  - [x] brew
+  - [x] git
+  - [x] NodeJS (node)
+  - [x] npm
+- [x] The script should generate a log file and output to terminal.
 
 ## Adding an SSH key to GitHub
 
@@ -56,8 +56,8 @@ password-less authentication. It is also more secure e.g. keyloggers.
 ## How do I know I'm done?
 
 - [x] I have answered the questions
-- [ ] I have created an executable script that completes all requirements
-- [ ] I have commented the script (what is the purpose of each line or function)
+- [x] I have created an executable script that completes all requirements
+- [x] I have commented the script (what is the purpose of each line or function)
 
 ## Handin
 

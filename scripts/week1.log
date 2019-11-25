@@ -1,3 +1,5 @@
+Time of script start: Mon Nov 25 17:26:48 GMT 2019
+==========================================
 Welcome brutzki!
 This script will setup a basic development environment
 It will install the following tools: 
@@ -5,7 +7,8 @@ It will install the following tools:
 * git 
 * NodeJS & npm
 You're currently running on MacOS
-Time of script start: Mon Nov 25 17:14:33 GMT 2019
+==========================================
+Installing...
 ==> This script will install:
 /usr/local/bin/brew
 /usr/local/share/doc/homebrew
@@ -31,6 +34,7 @@ Read the analytics documentation (and how to opt-out) here:
 - Further documentation: 
     https://docs.brew.sh
 Already up-to-date.
+==========================================
 Installation complete, printing versions:
 Homebrew version: Homebrew 2.1.16
 Homebrew/homebrew-core (git revision 11eacb; last commit 2019-11-25)
@@ -38,4 +42,51 @@ Homebrew/homebrew-cask (git revision 61fb4f; last commit 2019-11-25)
 Git version: git version 2.24.0
 NodeJS version: v13.2.0
 npm version: 6.13.1
-Time of script end: Mon Nov 25 17:14:49 GMT 2019
+==========================================
+Time of script end: Mon Nov 25 17:27:04 GMT 2019
+Time of script start: Mon Nov 25 17:27:17 GMT 2019
+==========================================
+Welcome brutzki!
+This script will setup a basic development environment
+It will install the following tools: 
+* Homebrew 
+* git 
+* NodeJS & npm
+You're currently running on MacOS
+==========================================
+Installing...
+==> This script will install:
+/usr/local/bin/brew
+/usr/local/share/doc/homebrew
+/usr/local/share/man/man1/brew.1
+/usr/local/share/zsh/site-functions/_brew
+/usr/local/etc/bash_completion.d/brew
+/usr/local/Homebrew
+
+Press RETURN to continue or any other key to abort
+==> Downloading and installing Homebrew...
+HEAD is now at 83d851351 Merge pull request #6773 from Homebrew/dependabot/bundler/Library/Homebrew/parallel-1.19.1
+Already up-to-date.
+==> Installation successful!
+
+==> Homebrew has enabled anonymous aggregate formulae and cask analytics.
+Read the analytics documentation (and how to opt-out) here:
+  https://docs.brew.sh/Analytics
+
+==> Homebrew is run entirely by unpaid volunteers. Please consider donating:
+  https://github.com/Homebrew/brew#donations
+==> Next steps:
+- Run `brew help` to get started
+- Further documentation: 
+    https://docs.brew.sh
+Already up-to-date.
+==========================================
+Installation complete, printing versions:
+Homebrew version: Homebrew 2.1.16
+Homebrew/homebrew-core (git revision 11eacb; last commit 2019-11-25)
+Homebrew/homebrew-cask (git revision 61fb4f; last commit 2019-11-25)
+Git version: git version 2.24.0
+NodeJS version: v13.2.0
+npm version: 6.13.1
+==========================================
+Time of script end: Mon Nov 25 17:27:36 GMT 2019
