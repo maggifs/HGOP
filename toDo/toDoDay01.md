@@ -5,11 +5,11 @@ Introduction into the bash scripting language and learning how to setup our loca
 ## Questions (1-2 lines each)
 
 - [x] What is Linux?
-- [ ] What is bash?
-- [ ] What is a package manager?
-- [ ] What is git?
-- [ ] What is npm?
-- [ ] What is NodeJS?
+- [x] What is bash?
+- [x] What is a package manager?
+- [x] What is git?
+- [x] What is npm?
+- [x] What is NodeJS?
 
 ## Objectives
 
@@ -55,7 +55,7 @@ password-less authentication. It is also more secure e.g. keyloggers.
 
 ## How do I know I'm done?
 
-- [ ] I have answered the questions
+- [x] I have answered the questions
 - [ ] I have created an executable script that completes all requirements
 - [ ] I have commented the script (what is the purpose of each line or function)
 
