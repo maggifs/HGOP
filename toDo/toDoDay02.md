@@ -7,7 +7,7 @@ What is Docker?\
 
 ### Getting started with docker
 
-- [ ] Install Docker
+- [x] Install Docker
 After the installation you should add your user to the docker user group so that you do not
 have to use sudo to run commands (Linux only).
 
@@ -25,8 +25,8 @@ To generate this message, Docker took the following steps:
 
 ### How do I know I'm done?
 
-- [ ] Docker is installed.
-- [ ] The docker command works without sudo privileges.
+- [x] Docker is installed.
+- [x] The docker command works without sudo privileges.
 
 ### FAQ
 
