@@ -11,10 +11,10 @@ app.get('/status', (req, res) => {
 //api call to /items which returns a list of the the 10 newest item names.
 app.get('/items', (req, res) => {
     database.getItems(function(items) {
-        // TODO: order items alphabetically
         var names = items.map(x => x.name);
         res.statusCode = 200;
-        res.send(names);
+        // sort() used to sort items alphabetically
+        res.send(names.sort());
     });
 });
 
