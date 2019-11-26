@@ -57,5 +57,5 @@ function setup {
   echo "Time of script end: $endDate"
 }
 
-#Run the setup() function, and append the output in week1.log using tee 
-setup | tee -a week1.log
+#Run the setup() function, and append the output in setup_MacOS.log using tee 
+setup | tee -a setup_MacOS.log
