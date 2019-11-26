@@ -32,10 +32,14 @@ function setup {
     # installs nodejs
     sudo apt-get install nodejs
 
+    # installs aws cli
+    sudo apt-get install awscli
+
     #Storing version of installed programs in variables
     gitVer=`git --version`
     nodeVer=`node --version`
     npmVer=`npm --version`
+    awsCliVer=`aws --version`
 
     #Printing out versions
     echo "=========================================="
@@ -43,6 +47,7 @@ function setup {
     echo "Git version: $gitVer"
     echo "NodeJS version: $nodeVer"
     echo "npm version: $npmVer"
+    echo "aws version: $awsCliVer"
     echo "=========================================="
     #Storing end date of script in a variable
     endDate=`date`
