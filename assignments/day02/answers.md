@@ -6,9 +6,13 @@ Docker is a platform to create containers which can be used to host applicaions 
 
 ## What is the difference between:
 * Virtual Machine
+Virtual machine is an emulation of a computer system.
 * Docker Container
+Docker container is a standardized unit which can be created to deploy a particular application or environment.
 * Docker Image
-TODO: short comparison
+Docker image is a template used to build containers. Images are used to store and ship applications.
+
+Virual machines are slow, containers are fast. Conainers do not waste or block host resources unlike virtual machines.
 
 ## Web API?
 Web API is an application programming interface for either web server or a web browser that is exposed over the internet.
@@ -26,7 +30,7 @@ Express is a minimal and flexible Node.js application framework that provides a 
 pg is a collection of node.js modules for interfacing with postgres database. It has support for callbacks, promises, async/await and more.
 
 ## What is docker-compose:
-TODO: short description
+It is used to run multiple containers in a single service. 
 
 ## Results
 TODO: What was accomplished in this exercise
