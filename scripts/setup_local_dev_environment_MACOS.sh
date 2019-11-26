@@ -37,11 +37,15 @@ function setup {
   #Install NodeJS with homebrew
   brew install node
 
+  #Install AWS CLI with pip3
+  pip3 install awscli --upgrade --user
+  
   #Storing version of installed programs in variables
   brewVer=`brew -v`
   gitVer=`git --version`
   nodeVer=`node -v`
   npmVer=`npm -v`
+  awscliVer=`aws --version`
 
   #Printing out versions
   echo "=========================================="
@@ -50,6 +54,7 @@ function setup {
   echo "Git version: $gitVer"
   echo "NodeJS version: $nodeVer"
   echo "npm version: $npmVer"
+  echo "aws version: $awscliVer"
   echo "=========================================="
   #Storing end date of script in a variable
   endDate=`date`

@@ -128,11 +128,11 @@ Also remember to add `aws` to the setup script you created in day 1.
 
 ### How do I know I'm done?
 
-- [ ] I've created an account on AWS
-- [ ] I have one AWS instance running
-- [ ] I have a simple webserver running
-- [ ] I can visit my AWS site using its public DNS, example
+- [x] I've created an account on AWS
+- [x] I have one AWS instance running
+- [x] I have a simple webserver running
+- [x] I can visit my AWS site using its public DNS, example
       `http://ec2-SOME-NUMBERS.us-west-2.compute.amazonaws.com/` and see my
       application running
-- [ ] I have terminated the instance.
-- [ ] I have AWS cli installed.
+- [x] I have terminated the instance.
+- [x] I have AWS cli installed.
