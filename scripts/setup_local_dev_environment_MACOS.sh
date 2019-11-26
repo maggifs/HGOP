@@ -58,4 +58,4 @@ function setup {
 }
 
 #Run the setup() function, and append the output in setup_MacOS.log using tee 
-setup | tee -a setup-MacOS.log
+setup | tee -a setup_MacOS.log
