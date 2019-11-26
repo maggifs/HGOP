@@ -436,11 +436,11 @@ Docker to run it.
 
 ### How do I know I'm done?
 
-- [ ] I've created a docker image
-- [ ] I ran an instance of my image (a docker container) and saw the results in
+- [x] I've created a docker image
+- [x] I ran an instance of my image (a docker container) and saw the results in
       a browser (curl)
-- [ ] I've stored my docker image on Docker Cloud
-- [ ] I've committed all my code to GitHub and commented each line in the
+- [x] I've stored my docker image on Docker Cloud
+- [x] I've committed all my code to GitHub and commented each line in the
       `Dockerfile`, short description on the purpose of each line, e.g.
 
 ```
@@ -562,11 +562,11 @@ postgres container.
 
 ### How do I know I'm done?
 
-- [ ] I've gotten to know Docker compose
-- [ ] I ran `docker-compose up` and saw the expected results
-- [ ] I've posted the 12 animals to the API.
-- [ ] I've gotten the expected 10 items back.
-- [ ] The items are ordered alphabetically.
+- [x] I've gotten to know Docker compose
+- [x] I ran `docker-compose up` and saw the expected results
+- [x] I've posted the 12 animals to the API.
+- [x] I've gotten the expected 10 items back.
+- [x] The items are ordered alphabetically.
 
 ## Part 4 - Questions
 
