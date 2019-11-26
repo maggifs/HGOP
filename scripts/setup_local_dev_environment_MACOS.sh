@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function setup {
   #Get the starting date of the script
   startDate=`date`

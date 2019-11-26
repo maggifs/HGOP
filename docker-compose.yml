@@ -1,18 +1,25 @@
 version: '3'
 services:
   my_item_repository:
-    image: emiln17/hgop:day2-db
+    image: emiln17/hgop:day2
     ports:
     - '3000:3000'
     depends_on:
     - my_postgres_container
     environment:
-      POSTGRES_DB: 'my_postgres_database'
-      POSTGRES_USER: 'my_postgres_user'
-      POSTGRES_PASSWORD: 'my_postgres_password'
+      POSTGRES_DB: my_postgres_database
+      POSTGRES_USER: my_postgres_user
+      POSTGRES_PASSWORD: my_postgres_password
+    networks: 
+      - item_network
   my_postgres_container:
     image: postgres
     environment:
-      POSTGRES_DB: 'my_postgres_database'
-      POSTGRES_USER: 'my_postgres_user'
-      POSTGRES_PASSWORD: 'my_postgres_password'
+      POSTGRES_DB: my_postgres_database
+      POSTGRES_USER: my_postgres_user
+      POSTGRES_PASSWORD: my_postgres_password
+    networks: 
+      - item_network
+networks:
+  item_network:
+    driver: bridge
