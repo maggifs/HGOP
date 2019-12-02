@@ -2,6 +2,8 @@
 
 GIT_COMMIT=$1
 
-docker push emiln17/hgop:$GIT_COMMIT
-
-# TODO exit on error if any command fails
+if docker push emiln17/hgop:$GIT_COMMIT; then
+    echo "Docker build succeeded"
+else
+    echo "Docker build failed"
+fi
