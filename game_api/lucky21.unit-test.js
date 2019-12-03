@@ -109,7 +109,7 @@ describe("game API", () => {
       let game = lucky21Constructor(deck, dealer);
       game.state.cards = ["05C", "02D"];
 
-      expect(game.getCardsValue(game)).toBe(7);
+      expect(game.getCardsValue(game)).toEqual(7);
     });
     // Cards 2 aces
     test("cards 01H and 01C return card value 12", () => {
@@ -118,7 +118,7 @@ describe("game API", () => {
       let game = lucky21Constructor(deck, dealer);
       game.state.cards = ["01C", "01D"];
 
-      expect(game.getCardsValue(game)).toBe(12);
+      expect(game.getCardsValue(game)).toEqual(12);
     });
     // Cards 1 people card, 1 regular
     test("cards 12D and 04H return value 12", () => {
@@ -127,7 +127,7 @@ describe("game API", () => {
       let game = lucky21Constructor(deck, dealer);
       game.state.cards = ["12D", "04H"];
 
-      expect(game.getCardsValue(game)).toBe(14);
+      expect(game.getCardsValue(game)).toEqual(14);
     });
     // Cards with 1 ace, 1 regular
     test("cards 01D and 05H return value 16", () => {
@@ -136,7 +136,7 @@ describe("game API", () => {
       let game = lucky21Constructor(deck, dealer);
       game.state.cards = ["01D", "05H"];
 
-      expect(game.getCardsValue(game)).toBe(16);
+      expect(game.getCardsValue(game)).toEqual(16);
     });
     // Cards with 1 ace, 1 people card
     test("cards 01D and 12H return value 21", () => {
@@ -145,7 +145,7 @@ describe("game API", () => {
       let game = lucky21Constructor(deck, dealer);
       game.state.cards = ["01D", "12H"];
 
-      expect(game.getCardsValue(game)).toBe(21);
+      expect(game.getCardsValue(game)).toEqual(21);
     });
   });
 
@@ -157,7 +157,7 @@ describe("game API", () => {
       let game = lucky21Constructor(deck, dealer);
       game.state.card = "05H";
 
-      expect(game.getCardValue(game)).toBe(5);
+      expect(game.getCardValue(game)).toEqual(5);
     });
 
     test("having 03H and 06H in hand, getCardValue returns undefined", () => {

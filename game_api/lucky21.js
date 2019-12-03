@@ -28,6 +28,31 @@ module.exports = (deck, dealer) => {
         getCardsValue: (game) => {
             //TESTED
             // TODO
+            let counter = 0;
+            let total = 0;
+            let cards = game.state.cards;
+            for(i = 0; i < cards.length; i++) {
+                let card = parseInt(cards[i].substr(0,2));
+                if(card > 10){
+                    card = 10;
+                    total += card;
+                }
+                else if(card == 1){
+                    counter ++;
+                }
+                else {
+                    total += card;
+                }
+            };
+            for(i = 0; i < counter; i++) {
+                if(total + 11 > 21) {
+                    total += 1;
+                }
+                else {
+                    total += 11;
+                }
+            }
+            return total;
         },
         // The value of the card that should exceed 21 if it exists (integer or undefined).
         getCardValue: (game) => {
