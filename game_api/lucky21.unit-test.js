@@ -17,25 +17,6 @@ describe("game API", () => {
     expect(game.state.cards.length).toEqual(2);
   });
 
-  test("guess21OrUnder should draw the next card", () => {
-    // Arrange
-    let deck = deckConstructor();
-    deck = ["05C", "01D", "09S", "10H"];
-    let dealer = dealerConstructor();
-    // Override the shuffle to do nothing.
-    dealer.shuffle = deck => {};
-
-    // Inject our dependencies
-    let game = lucky21Constructor(deck, dealer);
-
-    // Act
-    game.guess21OrUnder(game);
-
-    // Assert
-    expect(game.state.cards.length).toEqual(3);
-    expect(game.state.cards[2]).toEqual("01D");
-  });
-
   describe("isGameOver", () => {
     test("game is over because card is not undefined", () => {
       let deck = deckConstructor();
@@ -245,9 +226,65 @@ describe("game API", () => {
 
   describe("guess21OrUnder", () => {
     //TODO
-    //Arrange
-    //Act
-    //Assert
+    test("guess21OrUnder should draw the next card", () => {
+        // Arrange
+        let deck = deckConstructor();
+        deck = ["05C", "01D", "09S", "10H"];
+        let dealer = dealerConstructor();
+        // Override the shuffle to do nothing.
+        dealer.shuffle = deck => {};
+    
+        // Inject our dependencies
+        let game = lucky21Constructor(deck, dealer);
+    
+        // Act
+        game.guess21OrUnder(game);
+    
+        // Assert
+        expect(game.state.cards.length).toEqual(3);
+        expect(game.state.cards[2]).toEqual("01D");
+        expect(game.state.cards).toEqual(undefined);
+    });
+    test("guess21OrUnder should give cards on hand value of 21", () => {
+        // Arrange
+        let deck = deckConstructor();
+        deck = ["05C", "01D", "10S", "10H"];
+        let dealer = dealerConstructor();
+        // Override the shuffle to do nothing.
+        dealer.shuffle = deck => {};
+    
+        // Inject our dependencies
+        let game = lucky21Constructor(deck, dealer);
+    
+        // Act
+        game.guess21OrUnder(game);
+    
+        // Assert
+        expect(game.state.cards.length).toEqual(3);
+        expect(game.state.cards[2]).toEqual("01D");
+        expect(game.state.cards).toEqual(undefined);
+        expect(game.getCardsValue(game)).toBe(21);
+    });
+    test("guess21OrUnder should give cards on hand value of 23", () => {
+        // Arrange
+        let deck = deckConstructor();
+        deck = ["05C", "03D", "10S", "10H"];
+        let dealer = dealerConstructor();
+        // Override the shuffle to do nothing.
+        dealer.shuffle = deck => {};
+    
+        // Inject our dependencies
+        let game = lucky21Constructor(deck, dealer);
+    
+        // Act
+        game.guess21OrUnder(game);
+    
+        // Assert
+        expect(game.state.cards.length).toEqual(3);
+        expect(game.state.cards[2]).toEqual("03D");
+        expect(game.state.cards).toEqual(undefined);
+        expect(game.getCardsValue(game)).toBe(23);
+    });
   });
 
   describe("guessOver21", () => {
