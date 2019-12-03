@@ -220,7 +220,7 @@ describe("game API", () => {
       let game = lucky21Constructor(deck, dealer);
       game.state.card = undefined;
 
-      expect(game.getCards(game)).toBe(undefined);
+      expect(game.getCard(game)).toBe(undefined);
     });
   });
 
