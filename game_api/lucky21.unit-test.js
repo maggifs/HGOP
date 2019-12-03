@@ -37,30 +37,43 @@ describe("game API", () => {
   });
 
   describe("isGameOver", () => {
-    test("game is over", () => {
+    test("game is over because card is not undefined", () => {
       let deck = deckConstructor();
       let dealer = dealerConstructor();
-      //Game is over if players total value is 21 or over
       let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["05C", "10D", "09S", "10H"];
+      game.state.card = "02H";
       expect(game.isGameOver(game)).toBe(true);
     });
 
-    test("game is not over", () => {
+    test("game is over because player has a total of 21", () => {
       let deck = deckConstructor();
       let dealer = dealerConstructor();
       let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["05C", "10D", "09S", "10H"];
+      game.state.cards = ["10S", "01H"];
+      expect(game.isGameOver(game)).toBe(true);
+    });
+
+    test("game is over because player has a total of over 21", () => {
+      let deck = deckConstructor();
+      let dealer = dealerConstructor();
+      let game = lucky21Constructor(deck, dealer);
+
+      game.state.cards = ["10S", "10H", "10C"];
+
+      expect(game.isGameOver(game)).toBe(true);
+    });
+
+    test("game is not over because player has a total of less than 21 and card is undefined", () => {
+      let deck = deckConstructor();
+      let dealer = dealerConstructor();
+      let game = lucky21Constructor(deck, dealer);
+      game.state.cards = ["02H", "03S"];
+      game.state.card = undefined;
       expect(game.isGameOver(game)).toBe(false);
     });
   });
 
   describe("playerWon", () => {
-    /*  Player loses if:
-      - Player has a total of over 21
-      - Player guesses that a card puts him over 21, but it puts him at 21
-      - Player guesses that a card puts him over 21, but it does not
-    */
     test("Player has won because total is equal to 21", () => {
       let deck = deckConstructor();
       let dealer = dealerConstructor();
@@ -238,6 +251,57 @@ describe("game API", () => {
   });
 
   describe("guessOver21", () => {
+    test("guessOver21 ends a game", () => {
+      let deck = deckConstructor();
+      deck = ["03H", "04H", "03S"];
+      let dealer = dealerConstructor();
+      let game = lucky21Constructor(deck, dealer);
+
+      game.guessOver21(game);
+
+      expect(game.isGameOver(game)).toBe(true);
+    });
+
+    test("guessOver21 sets game.state.card to a card", () => {
+      let deck = deckConstructor();
+      deck = ["03H", "04H", "03S"];
+      let dealer = dealerConstructor();
+      dealer.shuffle = deck => {};
+
+      let game = lucky21Constructor(deck, dealer);
+
+      game.guessOver21(game);
+
+      expect(game.state.card).toBe('03H');
+
+    })
+
+    test("a correct guess results in victory", () => {
+      let deck = deckConstructor();
+      deck = ["10H", "10H", "03S"];
+      let dealer = dealerConstructor();
+      dealer.shuffle = deck => {};
+
+      let game = lucky21Constructor(deck, dealer);
+      
+      game.guessOver21(game);
+      expect(game.playerWon(game)).toBe(true);
+      expect(game.isGameOver(game)).toBe(true);
+    });
+
+    test("an incorrect guess results in a loss", () => {
+      let deck = deckConstructor();
+      deck = ["10H", "03H", "03S"];
+      let dealer = dealerConstructor();
+      dealer.shuffle = deck => {};
+
+      let game = lucky21Constructor(deck, dealer);
+      
+      game.guessOver21(game);
+      expect(game.playerWon(game)).toBe(false);
+      expect(game.isGameOver(game)).toBe(true);
+
+    })
     //TODO
     //Arrange
     //Act
