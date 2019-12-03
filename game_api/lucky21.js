@@ -18,11 +18,12 @@ module.exports = (deck, dealer) => {
         // Is the game finished.
         isGameOver: (game) => {
             //TESTED
-            // TODO
+            if(game.playerWon(game) || game.getTotal(game) >= 21 || game.state.card ) return true;
+            return false;
         },
         // Has the player won (true or false).
         playerWon: (game) => {
-            // TODO
+            return false;
         },
         // The highest score the cards can yield without going over 21 (integer).
         getCardsValue: (game) => {
@@ -34,14 +35,23 @@ module.exports = (deck, dealer) => {
             //TESTED
             let card = game.state.card;
             if(card){
-                cardVal = card.substr(0,2);
-                return parseInt(cardVal);
+                cardVal = parseInt(card.substr(0,2));
+                if (cardVal > 11) {
+                    cardVal = 10;
+                }
+                return cardVal;
             }
             return card;
         },
         // The cards value + the card value if it exits (integer).
         getTotal: (game) => {
-            // TODO
+            let cardsValue = game.getCardsValue(game);
+            let cardValue = game.getCardValue(game);
+
+            if(cardValue){
+                return cardsValue + cardValue;
+            } 
+            return cardsValue;
         },
         // The player's cards (array of strings).
         getCards: (game) => {
@@ -58,6 +68,9 @@ module.exports = (deck, dealer) => {
         // Player action (void).
         guessOver21: (game) => {
             // TODO
+            let card = game.state.deck.pop();
+            game.state.card = card;
+
         },
     };
 };
