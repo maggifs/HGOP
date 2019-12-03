@@ -243,7 +243,7 @@ describe("game API", () => {
         // Assert
         expect(game.state.cards.length).toEqual(3);
         expect(game.state.cards[2]).toEqual("01D");
-        expect(game.state.cards).toEqual(undefined);
+        expect(game.state.card).toEqual(undefined);
     });
     test("guess21OrUnder should give cards on hand value of 21", () => {
         // Arrange
@@ -262,8 +262,10 @@ describe("game API", () => {
         // Assert
         expect(game.state.cards.length).toEqual(3);
         expect(game.state.cards[2]).toEqual("01D");
-        expect(game.state.cards).toEqual(undefined);
+        expect(game.state.card).toEqual(undefined);
         expect(game.getCardsValue(game)).toBe(21);
+        expect(game.isGameOver(game)).toBe(true);
+        expect(game.playerWon(game)).toBe(true);
     });
     test("guess21OrUnder should give cards on hand value of 23", () => {
         // Arrange
@@ -282,8 +284,10 @@ describe("game API", () => {
         // Assert
         expect(game.state.cards.length).toEqual(3);
         expect(game.state.cards[2]).toEqual("03D");
-        expect(game.state.cards).toEqual(undefined);
+        expect(game.state.card).toEqual(undefined);
         expect(game.getCardsValue(game)).toBe(23);
+        expect(game.isGameOver(game)).toBe(true);
+        expect(game.playerWon(game)).toBe(false);
     });
   });
 
@@ -338,10 +342,6 @@ describe("game API", () => {
       expect(game.playerWon(game)).toBe(false);
       expect(game.isGameOver(game)).toBe(true);
 
-    })
-    //TODO
-    //Arrange
-    //Act
-    //Assert
+    });
   });
 });
