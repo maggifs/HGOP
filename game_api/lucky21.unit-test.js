@@ -151,7 +151,6 @@ describe("game API", () => {
 
   describe("getCardValue", () => {
     test("getCardValue returns correct value of card variable", () => {
-      //TODO
       let deck = deckConstructor();
       let dealer = dealerConstructor();
       let game = lucky21Constructor(deck, dealer);
@@ -161,7 +160,6 @@ describe("game API", () => {
     });
 
     test("having 03H and 06H in hand, getCardValue returns undefined", () => {
-      //TODO
       let deck = deckConstructor();
       let dealer = dealerConstructor();
       let game = lucky21Constructor(deck, dealer);
@@ -172,7 +170,6 @@ describe("game API", () => {
   });
 
   describe("getTotal", () => {
-    //TODO
     test("having 03H and 06H in hand and card is 05H, getTotal returns 14", () => {
       let deck = deckConstructor();
       let dealer = dealerConstructor();
@@ -195,7 +192,6 @@ describe("game API", () => {
 
   describe("getCards", () => {
     test("having 05H and 03H in hand, getCards returns ['05H', '03H']", () => {
-      //TODO
       let deck = deckConstructor();
       let dealer = dealerConstructor();
       let game = lucky21Constructor(deck, dealer);
@@ -225,7 +221,6 @@ describe("game API", () => {
   });
 
   describe("guess21OrUnder", () => {
-    //TODO
     test("guess21OrUnder should draw the next card", () => {
         // Arrange
         let deck = deckConstructor();

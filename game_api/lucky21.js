@@ -28,7 +28,6 @@ module.exports = (deck, dealer) => {
         // The highest score the cards can yield without going over 21 (integer).
         getCardsValue: (game) => {
             //TESTED
-            // TODO
             let counter = 0;
             let total = 0;
             let cards = game.state.cards;
@@ -89,10 +88,10 @@ module.exports = (deck, dealer) => {
         // Player action (void).
         guess21OrUnder: (game) => {
             // TODO
+            game.state.cards.push(deck.pop());
         },
         // Player action (void).
         guessOver21: (game) => {
-            // TODO
             let card = game.state.deck.pop();
             game.state.card = card;
 
