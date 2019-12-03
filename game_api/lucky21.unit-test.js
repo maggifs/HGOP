@@ -56,8 +56,7 @@ describe("game API", () => {
   });
 
   describe("playerWon", () => {
-
-     /*  Player loses if:
+    /*  Player loses if:
       - Player has a total of over 21
       - Player guesses that a card puts him over 21, but it puts him at 21
       - Player guesses that a card puts him over 21, but it does not
@@ -66,13 +65,13 @@ describe("game API", () => {
       let deck = deckConstructor();
       let dealer = dealerConstructor();
       let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ['01H', '10H'];
+      game.state.cards = ["01H", "10H"];
       expect(game.playerWon(game)).toBe(true);
     });
 
     test("Player has won because he guesses that card puts him over 21 and it does", () => {
       let deck = deckConstructor();
-      deck = ['05H'];
+      deck = ["05H"];
 
       let dealer = dealerConstructor();
       dealer.shuffle = deck => {};
@@ -88,7 +87,7 @@ describe("game API", () => {
       let dealer = dealerConstructor();
       let game = lucky21Constructor(deck, dealer);
 
-      game.state.cards = ['10H', '12H', '11H'];
+      game.state.cards = ["10H", "12H", "11H"];
 
       expect(game.playerWon(game)).toBe(false);
     });
@@ -101,11 +100,11 @@ describe("game API", () => {
 
       let game = lucky21Constructor(deck, dealer);
       game.state.cards = ["10H", "08S"];
-      
+
       game.guessOver21(game);
 
       expect(game.playerWon(game)).toBe(false);
-    })
+    });
   });
 
   describe("getCardsValue", () => {
@@ -127,26 +126,32 @@ describe("game API", () => {
 
       expect(game.getCardsValue(game.state.cards)).toBe(12);
     });
-    // Cards 1 people card, 1 regular 
+    // Cards 1 people card, 1 regular
     test("cards 12D and 04H return value 12", () => {
-        let game = lucky21Constructor();
-        game.state.cards = ["12D", "04H"];
+      let deck = deckConstructor();
+      let dealer = dealerConstructor();
+      let game = lucky21Constructor(deck, dealer);
+      game.state.cards = ["12D", "04H"];
 
-        expect(game.getCardsValue(game.state.cards)).toBe(14);
+      expect(game.getCardsValue(game.state.cards)).toBe(14);
     });
     // Cards with 1 ace, 1 regular
     test("cards 01D and 05H return value 16", () => {
-        let game = lucky21Constructor();
-        game.state.cards = ["01D", "05H"];
+      let deck = deckConstructor();
+      let dealer = dealerConstructor();
+      let game = lucky21Constructor(deck, dealer);
+      game.state.cards = ["01D", "05H"];
 
-        expect(game.getCardsValue(game.state.cards)).toBe(16);
+      expect(game.getCardsValue(game.state.cards)).toBe(16);
     });
     // Cards with 1 ace, 1 people card
     test("cards 01D and 12H return value 21", () => {
-        let game = lucky21Constructor();
-        game.state.cards = ["01D", "12H"];
+      let deck = deckConstructor();
+      let dealer = dealerConstructor();
+      let game = lucky21Constructor(deck, dealer);
+      game.state.cards = ["01D", "12H"];
 
-        expect(game.getCardsValue(game.state.cards)).toBe(21);
+      expect(game.getCardsValue(game.state.cards)).toBe(21);
     });
   });
 
@@ -175,18 +180,22 @@ describe("game API", () => {
   describe("getTotal", () => {
     //TODO
     test("having 03H and 06H in hand and card is 05H, getTotal returns 14", () => {
-        let game = lucky21Constructor();
-        game.state.cards = ["03H", "06H"];
-        game.state.card = "05H";
+      let deck = deckConstructor();
+      let dealer = dealerConstructor();
+      let game = lucky21Constructor(deck, dealer);
+      game.state.cards = ["03H", "06H"];
+      game.state.card = "05H";
 
-        expect(game.getTotal(game)).toBe(14)
+      expect(game.getTotal(game)).toBe(14);
     });
     test("having 03H and 06H in hand and card is undefined, getTotal returns 9", () => {
-        let game = lucky21Constructor();
-        game.state.cards = ["03H", "06H"];
-        game.state.card = undefined;
+      let deck = deckConstructor();
+      let dealer = dealerConstructor();
+      let game = lucky21Constructor(deck, dealer);
+      game.state.cards = ["03H", "06H"];
+      game.state.card = undefined;
 
-        expect(game.getTotal(game)).toBe(9)
+      expect(game.getTotal(game)).toBe(9);
     });
   });
 
@@ -204,30 +213,34 @@ describe("game API", () => {
 
   describe("getCard", () => {
     test("card is 05H, getCard returns 05H", () => {
-      let game = lucky21Constructor();
+      let deck = deckConstructor();
+      let dealer = dealerConstructor();
+      let game = lucky21Constructor(deck, dealer);
       game.state.card = "05H";
 
-      expect(game.getCards(game.state.cards)).toBe("05H");
+      expect(game.getCard(game)).toBe("05H");
     });
     test("card is undefined, getCard returns undefined", () => {
-        let game = lucky21Constructor();
-        game.state.card = undefined;
-  
-        expect(game.getCards(game.state.cards)).toBe(undefined);
-      });
+      let deck = deckConstructor();
+      let dealer = dealerConstructor();
+      let game = lucky21Constructor(deck, dealer);
+      game.state.card = undefined;
+
+      expect(game.getCards(game)).toBe(undefined);
+    });
   });
 
   describe("guess21OrUnder", () => {
     //TODO
-    //Arrange 
-    //Act 
+    //Arrange
+    //Act
     //Assert
   });
 
   describe("guessOver21", () => {
     //TODO
-    //Arrange 
-    //Act 
+    //Arrange
+    //Act
     //Assert
   });
 });
