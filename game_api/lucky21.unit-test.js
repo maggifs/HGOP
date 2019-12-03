@@ -65,12 +65,13 @@ describe("game API", () => {
 
     test("Player has won because he guesses that card puts him over 21 and it does", () => {
       let deck = deckConstructor();
-      deck = ["05H"];
+      deck = ["05H", "04H", "10S"];
 
       let dealer = dealerConstructor();
       dealer.shuffle = deck => {};
 
       let game = lucky21Constructor(deck, dealer);
+      game.state.cards = ["10H", "08S"]
       game.guessOver21(game);
 
       expect(game.playerWon(game)).toBe(true);
@@ -167,6 +168,16 @@ describe("game API", () => {
 
       expect(game.getCardValue(game)).toBe(undefined);
     });
+
+    test("a face card will return a value of 10", () => {
+      let deck = deckConstructor();
+      let dealer = dealerConstructor();
+      let game = lucky21Constructor(deck, dealer);
+
+      game.state.card = "13H";
+
+      expect(game.getCardValue(game)).toEqual(10);
+    })
   });
 
   describe("getTotal", () => {

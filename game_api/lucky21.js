@@ -61,7 +61,7 @@ module.exports = (deck, dealer) => {
             let card = game.state.card;
             if(card){
                 cardVal = parseInt(card.substr(0,2));
-                if (cardVal > 11) {
+                if (cardVal > 10) {
                     cardVal = 10;
                 }
                 return cardVal;
