@@ -32,7 +32,12 @@ module.exports = (deck, dealer) => {
         // The value of the card that should exceed 21 if it exists (integer or undefined).
         getCardValue: (game) => {
             //TESTED
-            // TODO
+            let card = game.state.card;
+            if(card){
+                cardVal = card.substr(0,2);
+                return parseInt(cardVal);
+            }
+            return card;
         },
         // The cards value + the card value if it exits (integer).
         getTotal: (game) => {
@@ -40,11 +45,11 @@ module.exports = (deck, dealer) => {
         },
         // The player's cards (array of strings).
         getCards: (game) => {
-            // TODO
+            return game.state.cards;
         },
         // The player's card (string or undefined).
         getCard: (game) => {
-            // TODO
+            return game.state.card;
         },
         // Player action (void).
         guess21OrUnder: (game) => {
