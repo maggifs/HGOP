@@ -17,6 +17,7 @@ module.exports = (deck, dealer) => {
         // Is the game over (true or false).
         // Is the game finished.
         isGameOver: (game) => {
+            //TESTED
             // TODO
         },
         // Has the player won (true or false).
@@ -25,10 +26,12 @@ module.exports = (deck, dealer) => {
         },
         // The highest score the cards can yield without going over 21 (integer).
         getCardsValue: (game) => {
+            //TESTED
             // TODO
         },
         // The value of the card that should exceed 21 if it exists (integer or undefined).
         getCardValue: (game) => {
+            //TESTED
             // TODO
         },
         // The cards value + the card value if it exits (integer).
