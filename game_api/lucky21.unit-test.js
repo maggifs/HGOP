@@ -74,13 +74,25 @@ test('cards 01H and 01C return card value 12', () => {
 
 test('having 10H and 05H in hand, getCardValue returns 7', () => {
   //TODO
+  let game = lucky21Constructor();
+  game.state.cards = ['10H', '05H'];
+
+  expect(game.getCardValue(game.state.card)).toBe(7);
 });
 
 test('having 03H and 06H in hand, getCardValue returns undefined', () => {
-  //TODO  
+  //TODO
+  let game = lucky21Constructor();
+  game.state.cards = ['03H', '06H'];
+
+  expect(game.getCardValue(game.state.card)).toBe(undefined);
 });
 
 test('having 05H and 03H in hand, getCards returns [\'05H\', \'03H\']', () => {
   //TODO
+  let game = lucky21Constructor();
+  game.state.cards = ['05H', '03H'];
+
+  expect(game.getCards(game.state.cards)).toBe(['05H', '03H'])
 })
 
