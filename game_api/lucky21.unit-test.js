@@ -64,7 +64,7 @@ describe('game API', () => {
     });
 
     test('Player has won because he guesses that card puts him over 21 and it does', () => {
-      const deck = deckConstructor();
+      let deck = deckConstructor();
       deck = ['05H', '04H', '10S'];
 
       const dealer = dealerConstructor();
@@ -88,7 +88,7 @@ describe('game API', () => {
     });
 
     test('Player lost because he guesses over21 when it is not over21', () => {
-      const deck = deckConstructor();
+      let deck = deckConstructor();
       deck = ['02H', '03C'];
       const dealer = dealerConstructor();
       dealer.shuffle = (deck) => {};
@@ -234,7 +234,7 @@ describe('game API', () => {
   describe('guess21OrUnder', () => {
     test('guess21OrUnder should draw the next card', () => {
       // Arrange
-      const deck = deckConstructor();
+      let deck = deckConstructor();
       deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor();
 
@@ -254,7 +254,7 @@ describe('game API', () => {
     });
     test('guess21OrUnder should give cards on hand value of 21', () => {
       // Arrange
-      const deck = deckConstructor();
+      let deck = deckConstructor();
       deck = ['05C', '01D', '10S', '10H'];
       const dealer = dealerConstructor();
 
@@ -277,7 +277,7 @@ describe('game API', () => {
     });
     test('guess21OrUnder should give cards on hand value of 23', () => {
       // Arrange
-      const deck = deckConstructor();
+      let deck = deckConstructor();
       deck = ['05C', '03D', '10S', '10H'];
       const dealer = dealerConstructor();
       // Override the shuffle to do nothing.
@@ -301,7 +301,7 @@ describe('game API', () => {
 
   describe('guessOver21', () => {
     test('guessOver21 ends a game', () => {
-      const deck = deckConstructor();
+      let deck = deckConstructor();
       deck = ['03H', '04H', '03S'];
       const dealer = dealerConstructor();
       const game = lucky21Constructor(deck, dealer);
@@ -312,7 +312,7 @@ describe('game API', () => {
     });
 
     test('guessOver21 sets game.state.card to a card', () => {
-      const deck = deckConstructor();
+      let deck = deckConstructor();
       deck = ['03H', '04H', '03S'];
       const dealer = dealerConstructor();
       dealer.shuffle = (deck) => {};
@@ -325,7 +325,7 @@ describe('game API', () => {
     });
 
     test('a correct guess results in victory', () => {
-      const deck = deckConstructor();
+      let deck = deckConstructor();
       deck = ['10H', '10H', '03S'];
       const dealer = dealerConstructor();
       dealer.shuffle = (deck) => {};
@@ -338,7 +338,7 @@ describe('game API', () => {
     });
 
     test('an incorrect guess results in a loss', () => {
-      const deck = deckConstructor();
+      let deck = deckConstructor();
       deck = ['10H', '03H', '03S'];
       const dealer = dealerConstructor();
       dealer.shuffle = (deck) => {};
