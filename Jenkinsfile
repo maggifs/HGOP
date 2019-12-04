@@ -1,9 +1,9 @@
 node {
-    stage("Clean") {
-        git clean -dfxq
-        git stash
-    }
     def git = checkout scm
+    stage("Clean") {
+        sh "git clean -dfxq"
+        sh "git stash"
+    }
     stage("Build") {
         sh "./scripts/docker_build.sh ${git.GIT_COMMIT}"
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
