@@ -11,10 +11,7 @@ rm -f /var/lib/jenkins/terraform/hgop/production/scripts/docker_compose_up.sh
 cp scripts/docker_compose_up.sh /var/lib/jenkins/terraform/hgop/production/scripts/docker_compose_up.sh
 rm -f /var/lib/jenkins/terraform/hgop/production/docker-compose.yml
 cp docker-compose.yml /var/lib/jenkins/terraform/hgop/production/docker-compose.yml
-
-# TODO: Delete all .tf files from /var/lib/jenkins/terraform/hgop/production
 rm /var/lib/jenkins/terraform/hgop/production/*.tf
-# TODO: Copy all .tf files from repository to /var/lib/jenkins/terraform/hgop/production
 cp *.tf /var/lib/jenkins/terraform/hgop/production/
 
 cd /var/lib/jenkins/terraform/hgop/production
