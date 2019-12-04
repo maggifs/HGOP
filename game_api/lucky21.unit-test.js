@@ -1,100 +1,100 @@
-const lucky21Constructor = require("./lucky21.js");
-const deckConstructor = require("./deck.js");
-const dealerConstructor = require("./dealer.js");
+const lucky21Constructor = require('./lucky21.js');
+const deckConstructor = require('./deck.js');
+const dealerConstructor = require('./dealer.js');
 
-describe("game API", () => {
-  test("a new game should have 50 cards left in the deck", () => {
-    let deck = deckConstructor();
-    let dealer = dealerConstructor();
-    let game = lucky21Constructor(deck, dealer);
+describe('game API', () => {
+  test('a new game should have 50 cards left in the deck', () => {
+    const deck = deckConstructor();
+    const dealer = dealerConstructor();
+    const game = lucky21Constructor(deck, dealer);
     expect(game.state.deck.length).toEqual(50);
   });
 
-  test("a new game should have 2 drawn cards", () => {
-    let deck = deckConstructor();
-    let dealer = dealerConstructor();
-    let game = lucky21Constructor(deck, dealer);
+  test('a new game should have 2 drawn cards', () => {
+    const deck = deckConstructor();
+    const dealer = dealerConstructor();
+    const game = lucky21Constructor(deck, dealer);
     expect(game.state.cards.length).toEqual(2);
   });
 
-  describe("isGameOver", () => {
-    test("game is over because card is not undefined", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.card = "02H";
+  describe('isGameOver', () => {
+    test('game is over because card is not undefined', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.card = '02H';
       expect(game.isGameOver(game)).toBe(true);
     });
 
-    test("game is over because player has a total of 21", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["10S", "01H"];
+    test('game is over because player has a total of 21', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['10S', '01H'];
       expect(game.isGameOver(game)).toBe(true);
     });
 
-    test("game is over because player has a total of over 21", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
+    test('game is over because player has a total of over 21', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
 
-      game.state.cards = ["10S", "10H", "10C"];
+      game.state.cards = ['10S', '10H', '10C'];
 
       expect(game.isGameOver(game)).toBe(true);
     });
 
-    test("game is not over because player has a total of less than 21 and card is undefined", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["02H", "03S"];
+    test('game is not over because player has a total of less than 21 and card is undefined', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['02H', '03S'];
       game.state.card = undefined;
       expect(game.isGameOver(game)).toBe(false);
     });
   });
 
-  describe("playerWon", () => {
-    test("Player has won because total is equal to 21", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["01H", "10H"];
+  describe('playerWon', () => {
+    test('Player has won because total is equal to 21', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['01H', '10H'];
       expect(game.playerWon(game)).toBe(true);
     });
 
-    test("Player has won because he guesses that card puts him over 21 and it does", () => {
-      let deck = deckConstructor();
-      deck = ["05H", "04H", "10S"];
+    test('Player has won because he guesses that card puts him over 21 and it does', () => {
+      const deck = deckConstructor();
+      deck = ['05H', '04H', '10S'];
 
-      let dealer = dealerConstructor();
+      const dealer = dealerConstructor();
       dealer.shuffle = deck => {};
 
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["10H", "08S"]
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['10H', '08S']
       game.guessOver21(game);
 
       expect(game.playerWon(game)).toBe(true);
     });
 
-    test("Player lost because total is over 21", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
+    test('Player lost because total is over 21', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
 
-      game.state.cards = ["10H", "12H", "11H"];
+      game.state.cards = ['10H', '12H', '11H'];
 
       expect(game.playerWon(game)).toBe(false);
     });
 
-    test("Player lost because he guesses over21 when it is not over21", () => {
-      let deck = deckConstructor();
-      deck = ["02H", "03C"];
-      let dealer = dealerConstructor();
+    test('Player lost because he guesses over21 when it is not over21', () => {
+      const deck = deckConstructor();
+      deck = ['02H', '03C'];
+      const dealer = dealerConstructor();
       dealer.shuffle = deck => {};
 
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["10H", "08S"];
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['10H', '08S'];
 
       game.guessOver21(game);
 
@@ -102,194 +102,194 @@ describe("game API", () => {
     });
   });
 
-  describe("getCardsValue", () => {
+  describe('getCardsValue', () => {
     // Cards without people or aces
-    test("cards 05C and 02D return card value 7", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["05C", "02D"];
+    test('cards 05C and 02D return card value 7', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['05C', '02D'];
 
       expect(game.getCardsValue(game)).toEqual(7);
     });
     // Cards 2 aces
-    test("cards 01H and 01C return card value 12", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["01C", "01D"];
+    test('cards 01H and 01C return card value 12', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['01C', '01D'];
 
       expect(game.getCardsValue(game)).toEqual(12);
     });
     // Cards 1 people card, 1 regular
-    test("cards 12D and 04H return value 12", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["12D", "04H"];
+    test('cards 12D and 04H return value 12', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['12D', '04H'];
 
       expect(game.getCardsValue(game)).toEqual(14);
     });
     // Cards with 1 ace, 1 regular
-    test("cards 01D and 05H return value 16", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["01D", "05H"];
+    test('cards 01D and 05H return value 16', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['01D', '05H'];
 
       expect(game.getCardsValue(game)).toEqual(16);
     });
     // Cards with 1 ace, 1 people card
-    test("cards 01D and 12H return value 21", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["01D", "12H"];
+    test('cards 01D and 12H return value 21', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['01D', '12H'];
 
       expect(game.getCardsValue(game)).toEqual(21);
     });
   });
 
-  describe("getCardValue", () => {
-    test("getCardValue returns correct value of card variable", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.card = "05H";
+  describe('getCardValue', () => {
+    test('getCardValue returns correct value of card variable', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.card = '05H';
 
       expect(game.getCardValue(game)).toEqual(5);
     });
 
-    test("having 03H and 06H in hand, getCardValue returns undefined", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["03H", "06H"];
+    test('having 03H and 06H in hand, getCardValue returns undefined', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['03H', '06H'];
 
       expect(game.getCardValue(game)).toBe(undefined);
     });
 
-    test("a face card will return a value of 10", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
+    test('a face card will return a value of 10', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
 
-      game.state.card = "13H";
+      game.state.card = '13H';
 
       expect(game.getCardValue(game)).toEqual(10);
     })
   });
 
-  describe("getTotal", () => {
-    test("having 03H and 06H in hand and card is 05H, getTotal returns 14", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["03H", "06H"];
-      game.state.card = "05H";
+  describe('getTotal', () => {
+    test('having 03H and 06H in hand and card is 05H, getTotal returns 14', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['03H', '06H'];
+      game.state.card = '05H';
 
       expect(game.getTotal(game)).toBe(14);
     });
-    test("having 03H and 06H in hand and card is undefined, getTotal returns 9", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["03H", "06H"];
+    test('having 03H and 06H in hand and card is undefined, getTotal returns 9', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['03H', '06H'];
       game.state.card = undefined;
 
       expect(game.getTotal(game)).toBe(9);
     });
   });
 
-  describe("getCards", () => {
-    test("having 05H and 03H in hand, getCards returns ['05H', '03H']", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.cards = ["05H", "03H"];
+  describe('getCards', () => {
+    test('having 05H and 03H in hand, getCards returns [\'05H\', \'03H\']', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.cards = ['05H', '03H'];
 
-      expect(game.getCards(game)).toEqual(["05H", "03H"]);
+      expect(game.getCards(game)).toEqual(['05H', '03H']);
     });
   });
 
-  describe("getCard", () => {
-    test("card is 05H, getCard returns 05H", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
-      game.state.card = "05H";
+  describe('getCard', () => {
+    test('card is 05H, getCard returns 05H', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
+      game.state.card = '05H';
 
-      expect(game.getCard(game)).toBe("05H");
+      expect(game.getCard(game)).toBe('05H');
     });
-    test("card is undefined, getCard returns undefined", () => {
-      let deck = deckConstructor();
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
+    test('card is undefined, getCard returns undefined', () => {
+      const deck = deckConstructor();
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
       game.state.card = undefined;
 
       expect(game.getCard(game)).toBe(undefined);
     });
   });
 
-  describe("guess21OrUnder", () => {
-    test("guess21OrUnder should draw the next card", () => {
+  describe('guess21OrUnder', () => {
+    test('guess21OrUnder should draw the next card', () => {
         // Arrange
-        let deck = deckConstructor();
-        deck = ["05C", "01D", "09S", "10H"];
-        let dealer = dealerConstructor();
+        const deck = deckConstructor();
+        deck = ['05C', '01D', '09S', '10H'];
+        const dealer = dealerConstructor();
         // Override the shuffle to do nothing.
         dealer.shuffle = deck => {};
     
         // Inject our dependencies
-        let game = lucky21Constructor(deck, dealer);
+        const game = lucky21Constructor(deck, dealer);
     
         // Act
         game.guess21OrUnder(game);
     
         // Assert
         expect(game.state.cards.length).toEqual(3);
-        expect(game.state.cards[2]).toEqual("01D");
+        expect(game.state.cards[2]).toEqual('01D');
         expect(game.state.card).toEqual(undefined);
     });
-    test("guess21OrUnder should give cards on hand value of 21", () => {
+    test('guess21OrUnder should give cards on hand value of 21', () => {
         // Arrange
-        let deck = deckConstructor();
-        deck = ["05C", "01D", "10S", "10H"];
-        let dealer = dealerConstructor();
+        const deck = deckConstructor();
+        deck = ['05C', '01D', '10S', '10H'];
+        const dealer = dealerConstructor();
         // Override the shuffle to do nothing.
         dealer.shuffle = deck => {};
     
         // Inject our dependencies
-        let game = lucky21Constructor(deck, dealer);
+        const game = lucky21Constructor(deck, dealer);
     
         // Act
         game.guess21OrUnder(game);
     
         // Assert
         expect(game.state.cards.length).toEqual(3);
-        expect(game.state.cards[2]).toEqual("01D");
+        expect(game.state.cards[2]).toEqual('01D');
         expect(game.state.card).toEqual(undefined);
         expect(game.getCardsValue(game)).toBe(21);
         expect(game.isGameOver(game)).toBe(true);
         expect(game.playerWon(game)).toBe(true);
     });
-    test("guess21OrUnder should give cards on hand value of 23", () => {
+    test('guess21OrUnder should give cards on hand value of 23', () => {
         // Arrange
-        let deck = deckConstructor();
-        deck = ["05C", "03D", "10S", "10H"];
-        let dealer = dealerConstructor();
+        const deck = deckConstructor();
+        deck = ['05C', '03D', '10S', '10H'];
+        const dealer = dealerConstructor();
         // Override the shuffle to do nothing.
         dealer.shuffle = deck => {};
     
         // Inject our dependencies
-        let game = lucky21Constructor(deck, dealer);
+        const game = lucky21Constructor(deck, dealer);
     
         // Act
         game.guess21OrUnder(game);
     
         // Assert
         expect(game.state.cards.length).toEqual(3);
-        expect(game.state.cards[2]).toEqual("03D");
+        expect(game.state.cards[2]).toEqual('03D');
         expect(game.state.card).toEqual(undefined);
         expect(game.getCardsValue(game)).toBe(23);
         expect(game.isGameOver(game)).toBe(true);
@@ -297,25 +297,25 @@ describe("game API", () => {
     });
   });
 
-  describe("guessOver21", () => {
-    test("guessOver21 ends a game", () => {
-      let deck = deckConstructor();
-      deck = ["03H", "04H", "03S"];
-      let dealer = dealerConstructor();
-      let game = lucky21Constructor(deck, dealer);
+  describe('guessOver21', () => {
+    test('guessOver21 ends a game', () => {
+      const deck = deckConstructor();
+      deck = ['03H', '04H', '03S'];
+      const dealer = dealerConstructor();
+      const game = lucky21Constructor(deck, dealer);
 
       game.guessOver21(game);
 
       expect(game.isGameOver(game)).toBe(true);
     });
 
-    test("guessOver21 sets game.state.card to a card", () => {
-      let deck = deckConstructor();
-      deck = ["03H", "04H", "03S"];
-      let dealer = dealerConstructor();
+    test('guessOver21 sets game.state.card to a card', () => {
+      const deck = deckConstructor();
+      deck = ['03H', '04H', '03S'];
+      const dealer = dealerConstructor();
       dealer.shuffle = deck => {};
 
-      let game = lucky21Constructor(deck, dealer);
+      const game = lucky21Constructor(deck, dealer);
 
       game.guessOver21(game);
 
@@ -323,26 +323,26 @@ describe("game API", () => {
 
     })
 
-    test("a correct guess results in victory", () => {
-      let deck = deckConstructor();
-      deck = ["10H", "10H", "03S"];
-      let dealer = dealerConstructor();
+    test('a correct guess results in victory', () => {
+      const deck = deckConstructor();
+      deck = ['10H', '10H', '03S'];
+      const dealer = dealerConstructor();
       dealer.shuffle = deck => {};
 
-      let game = lucky21Constructor(deck, dealer);
+      const game = lucky21Constructor(deck, dealer);
       
       game.guessOver21(game);
       expect(game.playerWon(game)).toBe(true);
       expect(game.isGameOver(game)).toBe(true);
     });
 
-    test("an incorrect guess results in a loss", () => {
-      let deck = deckConstructor();
-      deck = ["10H", "03H", "03S"];
-      let dealer = dealerConstructor();
+    test('an incorrect guess results in a loss', () => {
+      const deck = deckConstructor();
+      deck = ['10H', '03H', '03S'];
+      const dealer = dealerConstructor();
       dealer.shuffle = deck => {};
 
-      let game = lucky21Constructor(deck, dealer);
+      const game = lucky21Constructor(deck, dealer);
       
       game.guessOver21(game);
       expect(game.playerWon(game)).toBe(false);
