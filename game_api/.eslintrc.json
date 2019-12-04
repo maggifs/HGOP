@@ -22,5 +22,6 @@
         "react"
     ],
     "rules": {
+        "max-len": ["error", { "ignoreStrings": true, "ignoreComments": true }]
     }
 }

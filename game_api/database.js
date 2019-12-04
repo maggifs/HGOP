@@ -41,9 +41,10 @@ module.exports = {
   },
 };
 
-/** This is a description of the foo function.
- * @return Client
-*/
+/**
+ * Creates a connection client to our PSQl DB.
+ * @return {Client} Client object.
+ */
 function getClient() {
   return new Client({
     host: 'my_postgres_container',
