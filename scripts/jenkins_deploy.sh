@@ -9,11 +9,11 @@ GIT_COMMIT=$1
 mkdir -p /var/lib/jenkins/terraform/hgop/production
 mkdir -p /var/lib/jenkins/terraform/hgop/production/scripts
 rm -f /var/lib/jenkins/terraform/hgop/production/scripts/initialize_game_api_instance.sh
-cp scripts/initialize_game_api_instance.sh /var/lib/jenkins/terraform/hgop/production/scripts/initialize_game_api_instance.sh
+cp initialize_game_api_instance.sh /var/lib/jenkins/terraform/hgop/production/scripts/initialize_game_api_instance.sh
 rm -f /var/lib/jenkins/terraform/hgop/production/scripts/docker_compose_up.sh
-cp scripts/docker_compose_up.sh /var/lib/jenkins/terraform/hgop/production/scripts/docker_compose_up.sh
+cp docker_compose_up.sh /var/lib/jenkins/te rraform/hgop/production/scripts/docker_compose_up.sh
 rm -f /var/lib/jenkins/terraform/hgop/production/docker-compose.yml
-cp docker-compose.yml /var/lib/jenkins/terraform/hgop/production/docker-compose.yml
+cp ../docker-compose.yml /var/lib/jenkins/terraform/hgop/production/docker-compose.yml
 rm -f /var/lib/jenkins/terraform/hgop/production/*.tf
 cp *.tf /var/lib/jenkins/terraform/hgop/production/
 
