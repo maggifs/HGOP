@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exits immediatly if a command fails
+set -e
+
 GIT_COMMIT=$1
 
 # We need to move some files around, because of the terraform state limitations.
