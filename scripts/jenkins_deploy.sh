@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exits immediatly if a command fails
-set -e
+# set -e
 
 GIT_COMMIT=$1
 
@@ -26,7 +26,5 @@ echo "Game API running at " + $(terraform output public_ip)
 
 ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./initialize_game_api_instance.sh"
 ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./docker_compose_up.sh $GIT_COMMIT"
-
-#TODO exit on error if deployment fails.
 
 exit 0
