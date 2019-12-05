@@ -35,5 +35,10 @@
             }
         }],
         "arrow-parens": ["error", "as-needed"]
+    },
+    "settings": {
+        "react": {
+            "version": "latest"
+        }
     }
 }

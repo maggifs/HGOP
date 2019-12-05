@@ -27,16 +27,16 @@ describe('Dealer', () => {
     });
     test('Dealer should return not shuffled deck', () => {
       // TODO
-      let dependencies = {
-        'random': () => newRandom([2, 1]),
+      const dependencies = {
+        random: () => newRandom([2, 1])
       };
-      let newDealer = require('./dealer.js');
-      let dealer = newDealer((name) => {
+      const newDealer = require('./dealer.js');
+      const dealer = newDealer(name => {
         return dependencies[name];
       });
-      let deck = ['a', 'b', 'c'];
+      const deck = ['a', 'b', 'c'];
 
-      dealer.shuffle = (deck) => {};
+      dealer.shuffle = deck => {};
 
       dealer.shuffle(deck);
 
@@ -45,11 +45,11 @@ describe('Dealer', () => {
   });
   describe('Draw', () => {
     test('Draw card should return card', () => {
-      let newDealer = require('./dealer.js');
-      let dependencies = {
-        'random': () => newRandom([2, 1]),
+      const newDealer = require('./dealer.js');
+      const dependencies = {
+        random: () => newRandom([2, 1])
       };
-      let dealer = newDealer((name) => {
+      const dealer = newDealer(name => {
         return dependencies[name];
       });
       const deck = ['05H', '07H', '09H'];
@@ -59,11 +59,11 @@ describe('Dealer', () => {
       expect(card).toEqual('09H');
     });
     test('Draw should check if deck is without the card', () => {
-      let newDealer = require('./dealer.js');
-      let dependencies = {
-        'random': () => newRandom([2, 1]),
+      const newDealer = require('./dealer.js');
+      const dependencies = {
+        random: () => newRandom([2, 1])
       };
-      let dealer = newDealer((name) => {
+      const dealer = newDealer(name => {
         return dependencies[name];
       });
       const deck = ['05H', '07H', '09H'];
