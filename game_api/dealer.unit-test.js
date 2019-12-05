@@ -8,7 +8,7 @@ function newRandom(randomReturnValues) {
 }
 describe('Dealer', () => {
   describe('Shuffle', () => {
-    test('dealer should shuffle cards', () => {
+    test('Dealer should shuffle cards', () => {
       // Arrange
       let dependencies = {
         'random': () => newRandom([2, 1]),
@@ -25,11 +25,20 @@ describe('Dealer', () => {
       // Assert
       expect(deck).toEqual(['c', 'b', 'a']);
     });
-    test('', () => {
+    test('Dealer should return not shuffled deck', () => {
       // TODO
-    });
-    test('', () => {
-      // TODO
+      let dependencies = {
+        'random': () => newRandom([2, 1]),
+      };
+      let newDealer = require('./dealer.js');
+      let dealer = newDealer((name) => {
+        return dependencies[name];
+      });
+      let deck = ['a', 'b', 'c'];
+
+      dealer.shuffle(deck);
+
+      expect(deck).toEqual(['a', 'b', 'c']);
     });
   });
   describe('Draw', () => {
