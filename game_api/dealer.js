@@ -10,8 +10,8 @@ module.exports = () => {
       }
     },
     draw: (deck) => {
-      const card = deck.pop();
-      return card;
-    },
-  };
+        const card = deck.pop();
+        return card;
+      },
+    };
 };
