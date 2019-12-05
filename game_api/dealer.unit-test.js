@@ -36,6 +36,8 @@ describe('Dealer', () => {
       });
       let deck = ['a', 'b', 'c'];
 
+      dealer.shuffle = (deck) => {};
+
       dealer.shuffle(deck);
 
       expect(deck).toEqual(['a', 'b', 'c']);
@@ -44,6 +46,9 @@ describe('Dealer', () => {
   describe('Draw', () => {
     test('Draw card should return card', () => {
       let newDealer = require('./dealer.js');
+      let dependencies = {
+        'random': () => newRandom([2, 1]),
+      };
       let dealer = newDealer((name) => {
         return dependencies[name];
       });
@@ -55,6 +60,9 @@ describe('Dealer', () => {
     });
     test('Draw should check if deck is without the card', () => {
       let newDealer = require('./dealer.js');
+      let dependencies = {
+        'random': () => newRandom([2, 1]),
+      };
       let dealer = newDealer((name) => {
         return dependencies[name];
       });
