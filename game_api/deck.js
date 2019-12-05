@@ -51,6 +51,6 @@ module.exports = () => {
     '10S',
     '11S',
     '12S',
-    '13S', // Spades
+    '13S' // Spades
   ];
 };

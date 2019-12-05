@@ -9,12 +9,12 @@ describe('Lucky 21', () => {
 
   test('a new game should have 2 drawn cards', () => {
     const context = require('./context').newContext();
-    let deck = ['05H', '04H', '10S'];
+    const deck = ['05H', '04H', '10S'];
 
     const dealer = dealerConstructor(context);
 
     dealer.shuffle = deck => {};
-    let dependencies = {
+    const dependencies = {
       deck: () => deck,
       dealer: () => dealer
     };
@@ -25,12 +25,12 @@ describe('Lucky 21', () => {
   describe('isGameOver', () => {
     test('game is over because card is not undefined', () => {
       const context = require('./context').newContext();
-      let deck = ['05H', '04H', '10S'];
+      const deck = ['05H', '04H', '10S'];
 
       const dealer = dealerConstructor(context);
 
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -42,12 +42,12 @@ describe('Lucky 21', () => {
 
     test('game is over because player has a total of 21', () => {
       const context = require('./context').newContext();
-      let deck = ['05H', '04H', '10S'];
+      const deck = ['05H', '04H', '10S'];
 
       const dealer = dealerConstructor(context);
 
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -58,12 +58,12 @@ describe('Lucky 21', () => {
 
     test('game is over because player has a total of over 21', () => {
       const context = require('./context').newContext();
-      let deck = ['05H', '04H', '10S'];
+      const deck = ['05H', '04H', '10S'];
 
       const dealer = dealerConstructor(context);
 
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -75,12 +75,12 @@ describe('Lucky 21', () => {
 
     test('game is not over because player has a total of less than 21 and card is undefined', () => {
       const context = require('./context').newContext();
-      let deck = ['05H', '04H', '10S'];
+      const deck = ['05H', '04H', '10S'];
 
       const dealer = dealerConstructor(context);
 
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -94,12 +94,12 @@ describe('Lucky 21', () => {
   describe('playerWon', () => {
     test('Player has won because total is equal to 21', () => {
       const context = require('./context').newContext();
-      let deck = ['05H', '04H', '10S'];
+      const deck = ['05H', '04H', '10S'];
 
       const dealer = dealerConstructor(context);
 
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -110,12 +110,12 @@ describe('Lucky 21', () => {
 
     test('Player has won because he guesses that card puts him over 21 and it does', () => {
       const context = require('./context').newContext();
-      let deck = ['05H', '04H', '10S'];
+      const deck = ['05H', '04H', '10S'];
 
       const dealer = dealerConstructor(context);
 
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -128,11 +128,11 @@ describe('Lucky 21', () => {
 
     test('Player lost because total is over 21', () => {
       const context = require('./context').newContext();
-      let deck = ['02H', '03C'];
+      const deck = ['02H', '03C'];
 
       const dealer = dealerConstructor(context);
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -145,11 +145,11 @@ describe('Lucky 21', () => {
 
     test('Player lost because he guesses over21 when it is not over21', () => {
       const context = require('./context').newContext();
-      let deck = ['02H', '03C'];
+      const deck = ['02H', '03C'];
 
       const dealer = dealerConstructor(context);
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -165,12 +165,12 @@ describe('Lucky 21', () => {
     // Cards without people or aces
     test('cards 05C and 02D return card value 7', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -183,12 +183,12 @@ describe('Lucky 21', () => {
     // Cards 2 aces
     test('cards 01H and 01C return card value 12', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -201,12 +201,12 @@ describe('Lucky 21', () => {
     // Cards 1 people card, 1 regular
     test('cards 12D and 04H return value 12', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -219,12 +219,12 @@ describe('Lucky 21', () => {
     // Cards with 1 ace, 1 regular
     test('cards 01D and 05H return value 16', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -237,12 +237,12 @@ describe('Lucky 21', () => {
     // Cards with 1 ace, 1 people card
     test('cards 01D and 12H return value 21', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -257,12 +257,12 @@ describe('Lucky 21', () => {
   describe('getCardValue', () => {
     test('getCardValue returns correct value of card variable', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -275,12 +275,12 @@ describe('Lucky 21', () => {
 
     test('having 03H and 06H in hand, getCardValue returns undefined', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -293,12 +293,12 @@ describe('Lucky 21', () => {
 
     test('a face card will return a value of 10', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -313,12 +313,12 @@ describe('Lucky 21', () => {
   describe('getTotal', () => {
     test('having 03H and 06H in hand and card is 05H, getTotal returns 14', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -330,12 +330,12 @@ describe('Lucky 21', () => {
     });
     test('having 03H and 06H in hand and card is undefined, getTotal returns 9', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -350,12 +350,12 @@ describe('Lucky 21', () => {
   describe('getCards', () => {
     test('having 05H and 03H in hand, getCards returns [\'05H\', \'03H\']', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -370,12 +370,12 @@ describe('Lucky 21', () => {
   describe('getCard', () => {
     test('card is 05H, getCard returns 05H', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -387,12 +387,12 @@ describe('Lucky 21', () => {
     });
     test('card is undefined, getCard returns undefined', () => {
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -408,12 +408,12 @@ describe('Lucky 21', () => {
     test('guess21OrUnder should draw the next card', () => {
       // Arrange
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '09S', '10H'];
+      const deck = ['05C', '01D', '09S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -431,12 +431,12 @@ describe('Lucky 21', () => {
     test('guess21OrUnder should give cards on hand value of 21', () => {
       // Arrange
       const context = require('./context').newContext();
-      let deck = ['05C', '01D', '10S', '10H'];
+      const deck = ['05C', '01D', '10S', '10H'];
       const dealer = dealerConstructor(context);
 
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -457,11 +457,11 @@ describe('Lucky 21', () => {
     test('guess21OrUnder should give cards on hand value of 23', () => {
       // Arrange
       const context = require('./context').newContext();
-      let deck = ['05C', '03D', '10S', '10H'];
+      const deck = ['05C', '03D', '10S', '10H'];
       const dealer = dealerConstructor(context);
       // Override the shuffle to do nothing.
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -484,10 +484,10 @@ describe('Lucky 21', () => {
   describe('guessOver21', () => {
     test('guessOver21 ends a game', () => {
       const context = require('./context').newContext();
-      let deck = ['03H', '04H', '03S'];
+      const deck = ['03H', '04H', '03S'];
       const dealer = dealerConstructor(context);
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -500,10 +500,10 @@ describe('Lucky 21', () => {
 
     test('guessOver21 sets game.state.card to a card', () => {
       const context = require('./context').newContext();
-      let deck = ['03H', '04H', '03S'];
+      const deck = ['03H', '04H', '03S'];
       const dealer = dealerConstructor(context);
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -516,10 +516,10 @@ describe('Lucky 21', () => {
 
     test('a correct guess results in victory', () => {
       const context = require('./context').newContext();
-      let deck = ['10H', '10H', '03S'];
+      const deck = ['10H', '10H', '03S'];
       const dealer = dealerConstructor(context);
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };
@@ -532,10 +532,10 @@ describe('Lucky 21', () => {
 
     test('an incorrect guess results in a loss', () => {
       const context = require('./context').newContext();
-      let deck = ['10H', '03H', '03S'];
+      const deck = ['10H', '03H', '03S'];
       const dealer = dealerConstructor(context);
       dealer.shuffle = deck => {};
-      let dependencies = {
+      const dependencies = {
         deck: () => deck,
         dealer: () => dealer
       };

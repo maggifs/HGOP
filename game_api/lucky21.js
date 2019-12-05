@@ -1,9 +1,9 @@
-module.exports = (context) => {
-  let deckConstructor = context('deck');
-  let deck = deckConstructor(context);
+module.exports = context => {
+  const deckConstructor = context('deck');
+  const deck = deckConstructor(context);
 
-  let dealerConstructor = context('dealer');
-  let dealer = dealerConstructor(context);
+  const dealerConstructor = context('dealer');
+  const dealer = dealerConstructor(context);
 
   dealer.shuffle(deck);
   const card0 = dealer.draw(deck);
@@ -11,24 +11,26 @@ module.exports = (context) => {
   const state = {
     deck: deck,
     dealer: dealer,
-    cards: [card0, card1,],
+    cards: [card0, card1],
     // The card that the player thinks will exceed 21.
-    card: undefined,
+    card: undefined
   };
   return {
     state: state,
     // Is the game over (true or false).
     // Is the game finished.
-    isGameOver: (game) => {
-      if (game.playerWon(game) ||
+    isGameOver: game => {
+      if (
+        game.playerWon(game) ||
         game.getTotal(game) >= 21 ||
-        game.state.card) {
+        game.state.card
+      ) {
         return true;
       }
       return false;
     },
     // Has the player won (true or false).
-    playerWon: (game) => {
+    playerWon: game => {
       if (game.getTotal(game) > 21 && game.state.card) return true;
       if (game.getTotal(game) == 21 && game.state.card == undefined) {
         return true;
@@ -36,7 +38,7 @@ module.exports = (context) => {
       return false;
     },
     // The highest score the cards can yield without going over 21 (integer).
-    getCardsValue: (game) => {
+    getCardsValue: game => {
       let counter = 0;
       let total = 0;
       const cards = game.state.cards;
@@ -61,7 +63,7 @@ module.exports = (context) => {
       return total;
     },
     // The value of the card that should exceed 21 if it exists (integer or undefined).
-    getCardValue: (game) => {
+    getCardValue: game => {
       const card = game.state.card;
       if (card) {
         cardVal = parseInt(card.substr(0, 2));
@@ -73,7 +75,7 @@ module.exports = (context) => {
       return card;
     },
     // The cards value + the card value if it exits (integer).
-    getTotal: (game) => {
+    getTotal: game => {
       const cardsValue = game.getCardsValue(game);
       const cardValue = game.getCardValue(game);
 
@@ -83,23 +85,23 @@ module.exports = (context) => {
       return cardsValue;
     },
     // The player's cards (array of strings).
-    getCards: (game) => {
+    getCards: game => {
       return game.state.cards;
     },
     // The player's card (string or undefined).
-    getCard: (game) => {
+    getCard: game => {
       return game.state.card;
     },
     // Player action (void).
-    guess21OrUnder: (game) => {
+    guess21OrUnder: game => {
       game.state.cards.push(deck.pop());
     },
     // Player action (void).
-    guessOver21: (game) => {
+    guessOver21: game => {
       const card = game.state.deck.pop();
       game.state.card = card;
     },
-    getState: (game) => {
+    getState: game => {
       return {
         cards: game.state.cards,
         cardsValue: game.getCardsValue(game),
@@ -107,8 +109,8 @@ module.exports = (context) => {
         cardValue: game.getCardValue(game),
         total: game.getTotal(game),
         gameOver: game.isGameOver(game),
-        playerWon: game.playerWon(game),
+        playerWon: game.playerWon(game)
       };
-  },
+    }
   };
 };

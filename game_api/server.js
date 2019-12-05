@@ -6,7 +6,7 @@ module.exports = function(context) {
   const config = configConstructor(context);
   const lucky21Constructor = context('lucky21');
 
-  let app = express();
+  const app = express();
 
   app.get('/status', (req, res) => {
     res.statusCode = 200;
