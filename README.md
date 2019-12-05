@@ -1,6 +1,7 @@
 # HGOP
 
 Hagnýt gæðastjórnun og prófanir
+[![Build Status](http://54.242.184.100:8080/job/Github%20pipeline/badge/icon)](http://54.242.184.100:8080/job/Github%20pipeline/)
 
 ## URL
 
