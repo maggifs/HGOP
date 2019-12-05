@@ -56,6 +56,18 @@ resource "aws_instance" "game_server" {
     }
   }
 
+  provisioner "file" {
+    source      = "scripts/docker_compose_up.sh"
+    destination = "/home/ubuntu/docker_compose_up.sh"
+
+    connection {
+      host        = coalesce(self.public_ip, self.private_ip)
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("~/.aws/GameKeyPair.pem")
+    }
+  }
+
   # Copies the specified file to the instance at specific location in the instance.
   provisioner "file" {
     source      = "docker-compose.yml"
@@ -79,6 +91,18 @@ resource "aws_instance" "game_server" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /home/ubuntu/initialize_game_api_instance.sh",
+    ]
+
+    connection {
+      host        = coalesce(self.public_ip, self.private_ip)
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("~/.aws/GameKeyPair.pem")
+    }
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /home/ubuntu/docker_compose_up.sh"
     ]
 
     connection {
