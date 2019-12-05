@@ -14,7 +14,7 @@ rm -f /var/lib/jenkins/terraform/hgop/production/scripts/docker_compose_up.sh
 cp scripts/docker_compose_up.sh /var/lib/jenkins/terraform/hgop/production/scripts/docker_compose_up.sh
 rm -f /var/lib/jenkins/terraform/hgop/production/docker-compose.yml
 cp docker-compose.yml /var/lib/jenkins/terraform/hgop/production/docker-compose.yml
-rm /var/lib/jenkins/terraform/hgop/production/*.tf
+rm -f /var/lib/jenkins/terraform/hgop/production/*.tf
 cp *.tf /var/lib/jenkins/terraform/hgop/production/
 
 cd /var/lib/jenkins/terraform/hgop/production
