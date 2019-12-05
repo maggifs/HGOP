@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exits immediatly if a command fails
-# set -e
+set -e
 
 GIT_COMMIT=$1
 
