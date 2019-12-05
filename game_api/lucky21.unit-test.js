@@ -2,7 +2,7 @@ const lucky21Constructor = require('./lucky21.js');
 const deckConstructor = require('./deck.js');
 const dealerConstructor = require('./dealer.js');
 
-describe('game API', () => {
+describe('Lucky 21', () => {
   test('a new game should have 50 cards left in the deck', () => {
     const deck = deckConstructor();
     const dealer = dealerConstructor();
