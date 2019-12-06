@@ -8,7 +8,6 @@ Hagnýt gæðastjórnun og prófanir
 
 ## URL
 Url to the Jenkins instance
-[54.242.184.100:8080](54.242.184.100:8080)
 <a href="http://54.242.184.100:8080">**54.242.184.100:8080**</a>
 
 ---
