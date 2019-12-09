@@ -43,7 +43,7 @@ module.exports = function(context) {
                     JSON.stringify(err)
                 );
                 res.statusCode = 500;
-                res.send();
+                res.send(err);
               }
             );
           },
@@ -52,7 +52,7 @@ module.exports = function(context) {
               'Failed to get total number of wins, Error:' + JSON.stringify(err)
             );
             res.statusCode = 500;
-            res.send();
+            res.send(err);
           }
         );
       },
@@ -61,7 +61,7 @@ module.exports = function(context) {
           'Failed to get total number of games, Error:' + JSON.stringify(err)
         );
         res.statusCode = 500;
-        res.send();
+        res.send(err);
       }
     );
   });
