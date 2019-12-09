@@ -73,9 +73,9 @@ module.exports = function(context) {
           };
           client.query(query, (err, res) => {
             if (err) {
-              onError('getTotalNumberOfGames query failed.');
+              onError('getTotalNumberOfGames query failed. ' + JSON.stringify(err));
             } else {
-              onSuccess(res);
+              onSuccess(res.rowCount);
             };
           });
         };
@@ -96,9 +96,9 @@ module.exports = function(context) {
           };
           client.query(query, (err, res) => {
             if (err) {
-              onError('getTotalNumberOfWins query failed.');
+              onError('getTotalNumberOfWins query failed. ' + JSON.stringify(err));
             } else {
-              onSuccess(res);
+              onSuccess(res.rowCount);
             }
             client.end();
           });
@@ -120,9 +120,9 @@ module.exports = function(context) {
           };
           client.query(query, (err, res) => {
             if (err) {
-              onError('getTotalNumberOf21 query failed.');
+              onError('getTotalNumberOf21 query failed. ' + JSON.stringify(err));
             } else {
-              onSuccess(res);
+              onSuccess(res.rowCount);
             }
             client.end();
           });
