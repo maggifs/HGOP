@@ -31,6 +31,16 @@ node {
         sh "./scripts/docker_build.sh ${git.GIT_COMMIT}"
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
     }
+    stage("API Test") {
+        dir("game_api") {
+            sh "API_URL=http://localhost:3000 npm run test:api"
+        }
+    }
+    stage("Capacity Test") {
+        dir("game_api") {
+            sh "API_URL=http://localhost:3000 npm run test:capacity"
+        }
+    }
     stage("Deploy") {
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT}"
     }

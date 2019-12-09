@@ -1,3 +1,6 @@
+variable "environment" {
+  type = string
+}
 # Using aws for provider, specifing credentials for aws and 
 # specifing the region for server.
 provider "aws" {
@@ -8,7 +11,7 @@ provider "aws" {
 # Creates a seurity group named GameSecurtiyGroup with 2 incoming ports on 22 and 3000.
 # Also sets outgoing on any port.
 resource "aws_security_group" "game_security_group" {
-  name = "GameSecurityGroup"
+  name = "GameSecurityGroup_${var.environment}"
 
   ingress {
     from_port   = 22
@@ -40,7 +43,7 @@ resource "aws_instance" "game_server" {
   key_name               = "GameKeyPair"
   vpc_security_group_ids = [aws_security_group.game_security_group.id]
   tags = {
-    Name = "GameServer"
+    Name = "GameServer_${var.environment}"
   }
 
   # Copies the specified file to the instance at specific location in the instance.
