@@ -73,7 +73,7 @@ module.exports = function(context) {
           };
           client.query(query, (err, res) => {
             if (err) {
-              onError(err);
+              onError("getTotalNumberOfGames query failed.");
             } else {
               onSuccess(res);
             };
@@ -96,7 +96,7 @@ module.exports = function(context) {
           };
           client.query(query, (err, res) => {
             if (err) {
-              onError(err);
+              onError("getTotalNumberOfWins query failed.");
             } else {
               onSuccess(res);
             }
@@ -120,7 +120,7 @@ module.exports = function(context) {
           };
           client.query(query, (err, res) => {
             if (err) {
-              onError(err);
+              onError("getTotalNumberOf21 query failed.");
             } else {
               onSuccess(res);
             }
