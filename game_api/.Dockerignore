@@ -1,1 +1,3 @@
 *.unit-test.js
+*.api-test.js
+*.lib-test.js
