@@ -17,6 +17,7 @@ node {
     stage("Test") {
         dir("game_api") {
             sh "npm run test:unit"
+            sh "npm run test:api"
             step([
                 $class: 'CloverPublisher',
                 cloverReportDir: 'coverage',
