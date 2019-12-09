@@ -69,7 +69,7 @@ module.exports = function(context) {
         } else {
           const query = {
             text:
-              'SELECT COUNT(*) FROM GamerResult'
+              'SELECT COUNT(*) FROM GameResult'
           };
           client.query(query, err => {
             if (err) {
@@ -91,7 +91,7 @@ module.exports = function(context) {
         } else {
           const query = {
             text:
-              'SELECT COUNT(*) FROM GamerResult WHERE Won IS 1'
+              'SELECT COUNT(*) FROM GameResult WHERE Won IS 1'
           };
           client.query(query, err => {
             if (err) {
@@ -114,7 +114,7 @@ module.exports = function(context) {
         } else {
           const query = {
             text:
-              'SELECT COUNT(*) FROM GamerResult WHERE Total IS 21'
+              'SELECT COUNT(*) FROM GameResult WHERE Total IS 21'
           };
           client.query(query, err => {
             if (err) {
