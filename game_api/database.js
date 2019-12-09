@@ -71,15 +71,16 @@ module.exports = function(context) {
             text:
               'SELECT COUNT(*) FROM GameResult'
           };
-          client.query(query, err => {
+          client.query(query, (err, res) => {
             if (err) {
               onError(err);
             } else {
-              onSuccess();
+              onSuccess(res);
             };
           });
         };
       });
+      return;
     },
     // Should call onSuccess with integer.
     getTotalNumberOfWins: (onSuccess, onError) => {
@@ -93,16 +94,17 @@ module.exports = function(context) {
             text:
               'SELECT COUNT(*) FROM GameResult WHERE Won IS 1'
           };
-          client.query(query, err => {
+          client.query(query, (err, res) => {
             if (err) {
               onError(err);
             } else {
-              onSuccess();
+              onSuccess(res);
             }
             client.end();
           });
         }
       });
+      return;
     },
     // Should call onSuccess with integer.
     getTotalNumberOf21: (onSuccess, onError) => {
@@ -116,16 +118,17 @@ module.exports = function(context) {
             text:
               'SELECT COUNT(*) FROM GameResult WHERE Total IS 21'
           };
-          client.query(query, err => {
+          client.query(query, (err, res) => {
             if (err) {
               onError(err);
             } else {
-              onSuccess();
+              onSuccess(res);
             }
             client.end();
           });
         }
       });
+      return;
     }
   };
 };
