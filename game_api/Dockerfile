@@ -8,13 +8,10 @@ WORKDIR /code
 COPY package.json package.json
 
 # Run npm install to install the dependencies listed in package.json
-RUN npm install
+RUN npm install --production
 
-# Copy database.js to the container
-COPY database.js database.js
-
-# Copy app.js to the container
-COPY app.js app.js
+# This skips the test files because we have a .dockerignore file defined
+COPY *.js ./
 
 # Run our server
 CMD node app.js
