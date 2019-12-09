@@ -115,7 +115,7 @@ module.exports = function(context) {
         } else {
           const query = {
             text:
-              'SELECT COUNT(*) FROM GamerResult WHERE Won IS 21'
+              'SELECT COUNT(*) FROM GamerResult WHERE Total IS 21'
           };
         }
         client.query(query, err => {
