@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euxo pipefail
+
 # Our Jenkins instance url
 JENKINS_URL=54.242.184.100
 
