@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -euxo pipefail
 # Change directory to 1 higher
 cd ..
 
