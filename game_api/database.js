@@ -65,22 +65,21 @@ module.exports = function(context) {
       client.connect(err => {
         if (err) {
           onError(err);
-          client.end()
+          client.end();
         } else {
           const query = {
             text:
               'SELECT COUNT(*) FROM GamerResult'
           };
-        }
-        client.query(query, err => {
-          if (err) {
-            onError(err);
-          } else {
-            onSuccess();
-          }
-          client.end();
-        });
-      })
+          client.query(query, err => {
+            if (err) {
+              onError(err);
+            } else {
+              onSuccess();
+            };
+          });
+        };
+      });
     },
     // Should call onSuccess with integer.
     getTotalNumberOfWins: (onSuccess, onError) => {
@@ -88,22 +87,22 @@ module.exports = function(context) {
       client.connect(err => {
         if (err) {
           onError(err);
-          client.end()
+          client.end();
         } else {
           const query = {
             text:
               'SELECT COUNT(*) FROM GamerResult WHERE Won IS 1'
           };
+          client.query(query, err => {
+            if (err) {
+              onError(err);
+            } else {
+              onSuccess();
+            }
+            client.end();
+          });
         }
-        client.query(query, err => {
-          if (err) {
-            onError(err);
-          } else {
-            onSuccess();
-          }
-          client.end();
-        });
-      })
+      });
     },
     // Should call onSuccess with integer.
     getTotalNumberOf21: (onSuccess, onError) => {
@@ -111,22 +110,22 @@ module.exports = function(context) {
       client.connect(err => {
         if (err) {
           onError(err);
-          client.end()
+          client.end();
         } else {
           const query = {
             text:
               'SELECT COUNT(*) FROM GamerResult WHERE Total IS 21'
           };
+          client.query(query, err => {
+            if (err) {
+              onError(err);
+            } else {
+              onSuccess();
+            }
+            client.end();
+          });
         }
-        client.query(query, err => {
-          if (err) {
-            onError(err);
-          } else {
-            onSuccess();
-          }
-          client.end();
-        });
-      })
+      });
     }
   };
 };
