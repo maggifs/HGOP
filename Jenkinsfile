@@ -33,15 +33,17 @@ node {
     }
     stage("API Test") {
         dir("game_api") {
+            sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
             sh "API_URL=http://localhost:3000 npm run test:api"
         }
     }
     stage("Capacity Test") {
         dir("game_api") {
+            sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} capacitytest"
             sh "API_URL=http://localhost:3000 npm run test:capacity"
         }
     }
     stage("Deploy") {
-        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT}"
+        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} production"
     }
 }
