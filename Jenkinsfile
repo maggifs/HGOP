@@ -32,14 +32,14 @@ node {
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
     }
     stage("API Test") {
-        sh "../scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
+        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
         sh "cd game_api"
         sh "npm run test:api"
         sh "cd .."
         sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
     }
     stage("Capacity Test") {
-        sh "../scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
+        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
         sh "cd game_api"
         sh "npm run test:api"
         sh "cd .."
