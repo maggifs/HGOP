@@ -32,18 +32,14 @@ node {
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
     }
     stage("API Test") {
-        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
-        APITEST_URL = sh (
-            script: '\$(terraform output public_ip)',
-            returnStdout: true
-        ).trim()
+        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} capacitytest"
+        APITEST_URL = sh "cd /var/lib/jenkins/terraform/hgop/apitest && terraform output public_ip"
         dir("game_api"){
             sh "API_URL=${APITEST_URL}:3000 npm run test:api"
         }
         dir("/var/lib/jenkins/terraform/hgop/apitest"){
-            sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
+            sh "terraform destroy -auto-approve -var environment=capacitytest || exit 1"
         }
-        
     }
     stage("Capacity Test") {
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} capacitytest"
