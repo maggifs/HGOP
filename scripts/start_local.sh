@@ -2,5 +2,5 @@
 
 set -euxo pipefail
 
-docker build ../game_api/ -t emiln17/hgop:e42478556062d5ce204858d8427da1e7d4d7499e
-GIT_COMMIT=e42478556062d5ce204858d8427da1e7d4d7499e docker-compose up
+docker build ../game_api/ -t emiln17/hgop:262d7fb5fff967ecbc0793512ddda51e6f76f790
+GIT_COMMIT=262d7fb5fff967ecbc0793512ddda51e6f76f790 docker-compose up
