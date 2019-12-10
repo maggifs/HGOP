@@ -34,13 +34,15 @@ node {
     stage("API Test") {
         dir("game_api") {
             sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
-            sh "API_URL=http://localhost:3000 npm run test:api"
+            sh "npm run test:api"
+            sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
         }
     }
     stage("Capacity Test") {
         dir("game_api") {
             sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} capacitytest"
-            sh "API_URL=http://localhost:3000 npm run test:capacity"
+            sh "npm run test:capacity"
+            sh "terraform destroy -auto-approve -var environment=capacitytest || exit 1"
         }
     }
     stage("Deploy") {
