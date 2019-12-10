@@ -32,18 +32,18 @@ node {
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
     }
     stage("API Test") {
-        dir("game_api") {
-            sh "../scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
-            sh "npm run test:api"
-            sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
-        }
+        sh "../scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
+        sh "cd game_api"
+        sh "npm run test:api"
+        sh "cd .."
+        sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
     }
     stage("Capacity Test") {
-        dir("game_api") {
-            sh "../scripts/jenkins_deploy.sh ${git.GIT_COMMIT} capacitytest"
-            sh "npm run test:capacity"
-            sh "terraform destroy -auto-approve -var environment=capacitytest || exit 1"
-        }
+        sh "../scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
+        sh "cd game_api"
+        sh "npm run test:api"
+        sh "cd .."
+        sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
     }
     stage("Deploy") {
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} production"
