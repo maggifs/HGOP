@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test:unit": "jest --testRegex *.unit-test.js --collectCoverage true",
-    "test:api": "jest --testRegex *.api-test.js --collectCoverage true",
-    "test:capacity": "jest --testRegex *.capacity-test.js --collectCoverage true",
+    "test:apitest": "jest --testRegex *.api-test.js --collectCoverage true",
+    "test:capacitytest": "jest --testRegex *.capacity-test.js --collectCoverage true",
     "eslint": "eslint -c .eslintrc.json *.js"
   },
   "author": "FILL_IN_WITH_YOUR_NAME",

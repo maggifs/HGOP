@@ -32,8 +32,7 @@ node {
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
     }
     stage("API Test") {
-        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} capacitytest"
-        APITEST_URL = sh "cd /var/lib/jenkins/terraform/hgop/apitest && terraform output public_ip"
+        APITEST_URL = sh "./api_test.sh ${git.GIT_COMMIT} apitest"
         dir("game_api"){
             sh "API_URL=${APITEST_URL}:3000 npm run test:api"
         }
