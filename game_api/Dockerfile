@@ -13,6 +13,8 @@ RUN npm install --production
 # This skips the test files because we have a .dockerignore file defined
 COPY *.js ./
 
+COPY database.json database.json
+
 COPY migrations/*.js migrations/
 
 # Give postgres time to setup before we try to migrate.
