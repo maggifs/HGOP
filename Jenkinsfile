@@ -33,8 +33,12 @@ node {
     }
     stage("API Test") {
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
+        URL = sh (
+            script: '\$(terraform output public_ip)',
+            returnStdout: true
+        ).trim()
         dir("game_api"){
-            sh "API_URL=\$(terraform output public_ip) npm run test:api"
+            sh "API_URL=$URL:3000 npm run test:api"
         }
         dir("/var/lib/jenkins/terraform/hgop/apitest"){
             sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
@@ -43,8 +47,12 @@ node {
     }
     stage("Capacity Test") {
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} capacitytest"
+        URL = sh (
+            script: '\$(terraform output public_ip)',
+            returnStdout: true
+        ).trim()
         dir("game_api"){
-            sh "API_URL=\$(terraform output public_ip) npm run test:capacity"
+            sh "API_URL=$URL:3000 npm run test:capacity"
         }
         dir("/var/lib/jenkins/terraform/hgop/capacitytest"){
             sh "terraform destroy -auto-approve -var environment=capacitytest || exit 1"
