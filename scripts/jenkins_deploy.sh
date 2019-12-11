@@ -27,7 +27,7 @@ FULL_URL="http://$(terraform output public_ip)"
 echo "Game API " + $ENV  + " is running at " + $FULL_URL + ":3000"
 
 ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./initialize_game_api_instance.sh"
-ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./docker_compose_up.sh $GIT_COMMIT $FULL_URL:4000"
+ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./docker_compose_up.sh $GIT_COMMIT $FULL_URL:4000 $ENV"
 
 
 exit 0
