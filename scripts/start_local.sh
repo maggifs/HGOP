@@ -2,8 +2,8 @@
 
 set -euxo pipefail
 
-docker build -t emiln17/hgop:dev game_api/  
-(cd /game_client && npm build)
-docker build -t emiln17/game_client:dev game_client/
+docker build game_api -t emiln17/hgop:dev
+(cd game_client && npm run build)
+docker build game_client -t emiln17/game_client:dev
 
 API_URL=localhost GIT_COMMIT=dev docker-compose up

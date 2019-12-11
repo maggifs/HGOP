@@ -26,7 +26,7 @@ terraform apply -auto-approve -var environment=$ENV || exit 1
 echo "Game API $ENV is running at " + $(terraform output public_ip)
 
 ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./initialize_game_api_instance.sh"
-ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./docker_compose_up.sh $GIT_COMMIT"
+ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./docker_compose_up.sh $GIT_COMMIT http://$(terraform output public_ip):4000"
 
 
 exit 0
