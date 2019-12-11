@@ -115,6 +115,11 @@ module.exports = function(context) {
           const won = game.playerWon(game);
           const score = game.getCardsValue(game);
           const total = game.getTotal(game);
+          if (won) {
+            client.increment('games.won');
+          } else {
+            client.increment('games.lost');
+          }
           database.insertResult(
             won,
             score,
@@ -152,6 +157,11 @@ module.exports = function(context) {
           const won = game.playerWon(game);
           const score = game.getCardsValue(game);
           const total = game.getTotal(game);
+          if (won) {
+            client.increment('games.won');
+          } else {
+            client.increment('games.lost');
+          }
           database.insertResult(
             won,
             score,
