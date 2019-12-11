@@ -23,7 +23,7 @@ We also invited HrafnOrri1207@gmail.com to our team in DataDog.
 ## Other
 
 **Week 3**
-* Few extra things that are in the project, script to start a local instance of the game. Test script for the tests.
+* Two extra things that are in the project, script to start a local instance of the game. Test script for the tests.
 
 **Week 2**
 * We added a build status for the README for jenkins and can be seen above.
