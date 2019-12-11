@@ -23,10 +23,11 @@ terraform init -input=false # In case terraform is not initialized.
 terraform destroy -auto-approve -var environment=$ENV || exit 1
 terraform apply -auto-approve -var environment=$ENV || exit 1
 
-echo "Game API $ENV is running at " + $(terraform output public_ip)
+FULL_URL="http://$(terraform output public_ip)"
+echo "Game API " + $ENV  + " is running at " + $FULL_URL + ":3000"
 
 ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./initialize_game_api_instance.sh"
-ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./docker_compose_up.sh $GIT_COMMIT http://$(terraform output public_ip):4000"
+ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./docker_compose_up.sh $GIT_COMMIT $FULL_URL:4000"
 
 
 exit 0
